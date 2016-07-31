@@ -83,7 +83,7 @@ You can change it in the file "/etc/dab-rpi.ini" in the section "[General]"
        device=dabstick # RTL2823U DVB-T stick
 or
 
-       device=rtl_tcp_client # rtl_tcp client
+       device=rtl_tcp # rtl_tcp client
 
 ### rtl_tcp setup
 rtl_tcp is a tool to connect the RTL2823U DVB-T stick to another PC and stream the raw data via TCP. The data rate about 5 MB/s so a simple Wifi network is not working.

@@ -16,7 +16,7 @@ Table of contents
     * [Installation](#installation)
     * [Usage](#usage)
     * [Input sources](#input-sources)
-    * [Power issues](#power-issues)
+    * [Power supply issues](#power-supply-issues)
     * [Troubleshooting](#troubleshooting)
   * [Create your own Raspberry image](#create-your-own-raspberry-image)
   * [dab-rpi and QT cross compiling](#dab-rpi-and-qt-cross-compiling)
@@ -93,13 +93,18 @@ rtl_tcp is a tool to connect the RTL2823U DVB-T stick to another PC and stream t
   ```
        $ rtl_tcp -a [local server IP] -p 1235
   ```
-2. Adapt the server IP address in "/etc/dab-rpi.ini" in the section "[rtl_tcp_client]"
+2. Adapt the input device in the file "/etc/dab-rpi.ini" in the section "[General]"
+
+  ```
+       device=rtl_tcp # rtl_tcp client
+  ```
+3. Adapt the server IP address in "/etc/dab-rpi.ini" in the section "[rtl_tcp_client]"
 
   ```
        remote-server=[server IP]
   ```
 
-Power issues
+Power supply issues
 -----
 
 TBD

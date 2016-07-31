@@ -1,27 +1,27 @@
 dab-rpi SD-card image
 =====================
-
+![dab-rpi Screenshot](/pictures/dab-rpi.jpg?raw=true)
 
 Table of contents
-------------------
+====
 
   * [Description](#description)
   * [Usage of the Raspberry image](#usage-of-the-raspberry-image)
   * [Create your own Raspberry image](#create-your-own-raspberry-image)
 
 Description
------------
+====
 This repository holds all binary files to run dab-rpi with GPU acceleration on a Raspberry Pi 2 and 3.
 
 **Warning: At the moment dab-rpi and the Raspberry image are in an early development stage! Usage at your own risk!**
 
 Usage of the Raspberry image
-----------------------------
+====
 
 TBD
 
 Create your own Raspberry image
--------------------------------
+====
 
 The following description bases on the Raspbian image "2016-05-27-raspbian-jessie-lite.img"
 

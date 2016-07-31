@@ -1,0 +1,15 @@
+prefix=/home/albrecht/raspi/qt5pi
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+host_bins=/home/albrecht/raspi/qt5/bin
+qt_config=minimal-config small-config medium-config large-config full-config fontconfig libudev evdev tslib xkbcommon-evdev libinput xlib xrender xcb-plugin xcb-render xcb-glx xcb-xlib xcb-sm accessibility-atspi-bridge gbm linuxfb kms c++11 accessibility egl eglfs eglfs_brcm eglfs_gbm openvg opengl opengles2 shared qpa reduce_exports clock-gettime clock-monotonic posix_fallocate mremap getaddrinfo ipv6ifname getifaddrs inotify eventfd threadsafe-cloexec system-jpeg system-png png system-freetype harfbuzz system-zlib mtdev cups iconv glib dbus dbus-linked openssl xcb xinput2 rpath alsa pulseaudio gstreamer-0.10 concurrent audio-backend release
+
+Name: Qt5 Core
+Description: Qt Core module
+Version: 5.6.2
+Libs: -L${libdir} -lQt5Core 
+Libs.private: -lpthread -lz -L/home/albrecht/raspi/qt5pi/lib -lqtpcre -lm -ldl -pthread -L/home/albrecht/raspi/sysroot/usr/lib/arm-linux-gnueabihf -lgthread-2.0 -lglib-2.0 -lrt  
+Cflags: -I${includedir}/QtCore -I${includedir}
+

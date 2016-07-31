@@ -1,0 +1,14 @@
+prefix=/home/albrecht/raspi/qt5pi
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 Qml
+Description: Qt Qml module
+Version: 5.6.2
+Libs: -L${libdir} -lQt5Qml 
+Libs.private: -L/home/albrecht/raspi/qt5pi/lib -lQt5Network -lQt5Core -lpthread -lrt  
+Cflags: -I${includedir}/QtQml -I${includedir}
+Requires: Qt5Core Qt5Network
+

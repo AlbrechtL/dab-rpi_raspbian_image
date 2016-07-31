@@ -1,0 +1,14 @@
+prefix=/home/albrecht/raspi/qt5pi
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 Sql
+Description: Qt Sql module
+Version: 5.6.2
+Libs: -L${libdir} -lQt5Sql 
+Libs.private: -L/home/albrecht/raspi/qt5pi/lib -lQt5Core -lpthread   
+Cflags: -I${includedir}/QtSql -I${includedir}
+Requires: Qt5Core
+

@@ -63,7 +63,7 @@ $ git clone https://github.com/AlbrechtL/dab-rpi_raspbian_image.git
 
   ```
 $ cd dab-rpi_raspbian_image
-$ rsync -av .rootfs root@IP:/
+$ rsync -av rootfs root@IP:/
   ```
 11. Back on the Raspberry fix the EGL/GLES libraries symbolic links
 
@@ -101,10 +101,11 @@ dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 roo
 # Rotate display
 lcd_rotate=2
   ```
-16. Run alsamixer and set the sound level to 100 %
+16. By default this image sets the 3.5 mm audio jack volume to 100 %. To change this change the line following line in "/etc/rc.local"
 
   ```
-  $ alsamixer
+# Set the audio jack volume to 100 %
+/usr/bin/amixer set PCM -- 100% >/tmp/amixer_output.log 2>/tmp/amixer_err_output.log
   ```
 17. Reboot the Raspberry and enjoy dab-rpi
 

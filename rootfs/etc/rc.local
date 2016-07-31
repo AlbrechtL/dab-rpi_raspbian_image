@@ -17,6 +17,10 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-/usr/local/bin/dab-rpi 2>/tmp/dab-rpi.log
+# Set the audio jack volume to 100 %
+/usr/bin/amixer set PCM -- 100% >/tmp/amixer_output.log 2>/tmp/amixer_err_output.log
+
+# Start dab-rpi
+/usr/local/bin/dab-rpi 2>/tmp/dab-rpi_output.log
 
 exit 0

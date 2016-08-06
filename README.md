@@ -207,9 +207,9 @@ lcd_rotate=2
 
 dab-rpi and QT cross compiling
 ===
-The tutorial is to cross compile dab-rpi and QT 5.6 with GPU acceleration for a Raspberry 2 or 3 and has to be followed one by one.
+The tutorial is to cross compile dab-rpi and QT 5.7 with GPU acceleration for a Raspberry 2 or 3 and has to be followed one by one.
 
-1. Follow the tutorial https://wiki.qt.io/RaspberryPi2EGLFS
+1. Follow the tutorial https://wiki.qt.io/RaspberryPi2EGLFS but use QT lib 5.7 instead of 5.6
 2. If you get the following QT compile error please read the [QTBUG-55029 ](https://bugreports.qt.io/browse/QTBUG-55029)
   
   ```
@@ -220,7 +220,7 @@ The tutorial is to cross compile dab-rpi and QT 5.6 with GPU acceleration for a 
 
   ```
 # cd ~/raspi
-# git clone git://code.qt.io/qt/qtxmlpatterns.git -b 5.6
+# git clone git://code.qt.io/qt/qtxmlpatterns.git -b 5.7
 # cd qtxmlpatterns
 # ~/raspi/qt5/bin/qmake -r
 # make
@@ -230,7 +230,7 @@ The tutorial is to cross compile dab-rpi and QT 5.6 with GPU acceleration for a 
 
   ```
 # cd ~/raspi
-# git git://code.qt.io/qt/qtdeclarative.git -b 5.6
+# git clone git://code.qt.io/qt/qtdeclarative.git -b 5.7
 # cd qtdeclarative
 # ~/raspi/qt5/bin/qmake -r
 # make
@@ -240,7 +240,7 @@ The tutorial is to cross compile dab-rpi and QT 5.6 with GPU acceleration for a 
 
   ```
 # cd ~/raspi
-# git git://code.qt.io/qt/qtquickcontrols.git -b 5.6
+# git clone git://code.qt.io/qt/qtquickcontrols.git -b 5.7
 # cd qtquickcontrols
 # ~/raspi/qt5/bin/qmake -r
 # make
@@ -250,18 +250,28 @@ The tutorial is to cross compile dab-rpi and QT 5.6 with GPU acceleration for a 
 
   ```
 # cd ~/raspi
-# git git://code.qt.io/qt/qtquickcontrols2.git -b 5.6
+# git clone git://code.qt.io/qt/qtquickcontrols2.git -b 5.7
 # cd qtquickcontrols2
 # ~/raspi/qt5/bin/qmake -r
 # make
 # make install
   ```
-7. Install all necessary libraries to compile dab-rpi on the RPi
+ 7. Compile qtcharts on the host PC
+
+  ```
+# cd ~/raspi
+# git clone git://code.qt.io/qt/qtcharts.git -b 5.7
+# cd qtcharts
+# ~/raspi/qt5/bin/qmake -r
+# make
+# make install
+  ```
+8. Install all necessary libraries to compile dab-rpi on the RPi
 
   ```
   # apt-get install libfaad-dev libfftw3-dev portaudio19-dev libusb-1.0-0-dev librtlsdr-dev libsndfile1-dev
   ```
-8. Resync all new files between the host PC and the RPi
+9. Resync all new files between the host PC and the RPi
 
   ```
 # cd ~/raspi
@@ -270,17 +280,17 @@ The tutorial is to cross compile dab-rpi and QT 5.6 with GPU acceleration for a 
 # rsync -avz pi@IP:/usr/lib sysroot/usr
 # rsync -avz pi@IP:/opt/vc sysroot/opt
   ```
-9. Adjust symlinks to be relative 
+10. Adjust symlinks to be relative 
 
   ```
 # cd ~/raspi
 # ./sysroot-relativelinks.py sysroot
   ```
-10. Now you can setup QT Creator as it is explanied in the tutorial https://wiki.qt.io/RaspberryPi2EGLFS
-11. Clone dab-rpi and open it with QT Creator
+11. Now you can setup QT Creator as it is explanied in the tutorial https://wiki.qt.io/RaspberryPi2EGLFS
+12. Clone dab-rpi and open it with QT Creator
 
   ```
 # cd ~/raspi
 # https://github.com/AlbrechtL/dab-rpi.git
   ```
-12. Cross compile dab-rpi, load it to the RPi and start it
+13. Cross compile dab-rpi, load it to the RPi and start it

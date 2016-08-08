@@ -8,6 +8,7 @@
 #include "qeglnativecontext.h"
 #include "qglxnativecontext.h"
 #include "qwglnativecontext.h"
+#include "qwaylandwindowfunctions.h"
 #include "qwindowswindowfunctions.h"
 #include "qxcbintegrationfunctions.h"
 #include "qxcbscreenfunctions.h"

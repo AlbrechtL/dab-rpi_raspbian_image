@@ -41,11 +41,7 @@ manifestmeta.highlighted.names      =   "QtQuick/Qt Quick Demo - Same Game" \
                                         "QtQuickExtras/Qt Quick Extras - Dashboard" \
                                         "QtQuickExtras/Qt Quick Extras - Flat" \
                                         "QtQuickExtras/Qt Quick Extras - Gallery" \
-                                        "QtQuickControls/Qt Quick Controls - Gallery" \
-                                        "QtQuickControls/Qt Quick Controls - Text Editor Example" \
-                                        "QtQuickControls/Qt Quick Controls - Table View Example" \
-                                        "QtQuickControls/Qt Quick Controls - Calendar Example" \
-                                        "QtQuickControls/Qt Quick Controls - File System Browser Example" \
+                                        "QtQuickControls2/Qt Quick Controls 2 - Gallery" \
                                         "QtQuickDialogs/Qt Quick System Dialog Examples" \
                                         "QtWinExtras/Quick Player" \
                                         "QtMultimedia/QML Video Shader Effects Example" \

@@ -1,7 +1,7 @@
 #define QT_VERSION_MAJOR    5
-#define QT_VERSION_MINOR    6
-#define QT_VERSION_PATCH    2
-#define QT_VERSION_STR      "5.6.2"
+#define QT_VERSION_MINOR    7
+#define QT_VERSION_PATCH    1
+#define QT_VERSION_STR      "5.7.1"
 
 /* Everything */
 /* Compile time features */
@@ -29,24 +29,6 @@
 # define QT_NO_LIBPROXY
 #endif
 
-#if defined(QT_NO_STYLE_GTK) && defined(QT_STYLE_GTK)
-# undef QT_NO_STYLE_GTK
-#elif !defined(QT_NO_STYLE_GTK) && !defined(QT_STYLE_GTK)
-# define QT_NO_STYLE_GTK
-#endif
-
-#if defined(QT_NO_TABLET) && defined(QT_TABLET)
-# undef QT_NO_TABLET
-#elif !defined(QT_NO_TABLET) && !defined(QT_TABLET)
-# define QT_NO_TABLET
-#endif
-
-#if defined(QT_NO_XINPUT) && defined(QT_XINPUT)
-# undef QT_NO_XINPUT
-#elif !defined(QT_NO_XINPUT) && !defined(QT_XINPUT)
-# define QT_NO_XINPUT
-#endif
-
 #if defined(QT_NO_ZLIB) && defined(QT_ZLIB)
 # undef QT_NO_ZLIB
 #elif !defined(QT_NO_ZLIB) && !defined(QT_ZLIB)
@@ -65,12 +47,6 @@
 # define QT_OPENGL_ES_2
 #endif
 
-#if defined(QT_OPENGL_ES_3) && defined(QT_NO_OPENGL_ES_3)
-# undef QT_OPENGL_ES_3
-#elif !defined(QT_OPENGL_ES_3) && !defined(QT_NO_OPENGL_ES_3)
-# define QT_OPENGL_ES_3
-#endif
-
 #if defined(QT_RUNTIME_XCURSOR) && defined(QT_NO_RUNTIME_XCURSOR)
 # undef QT_RUNTIME_XCURSOR
 #elif !defined(QT_RUNTIME_XCURSOR) && !defined(QT_NO_RUNTIME_XCURSOR)
@@ -81,12 +57,6 @@
 # undef QT_RUNTIME_XFIXES
 #elif !defined(QT_RUNTIME_XFIXES) && !defined(QT_NO_RUNTIME_XFIXES)
 # define QT_RUNTIME_XFIXES
-#endif
-
-#if defined(QT_RUNTIME_XINERAMA) && defined(QT_NO_RUNTIME_XINERAMA)
-# undef QT_RUNTIME_XINERAMA
-#elif !defined(QT_RUNTIME_XINERAMA) && !defined(QT_NO_RUNTIME_XINERAMA)
-# define QT_RUNTIME_XINERAMA
 #endif
 
 #if defined(QT_RUNTIME_XRANDR) && defined(QT_NO_RUNTIME_XRANDR)

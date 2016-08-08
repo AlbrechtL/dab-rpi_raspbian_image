@@ -6,7 +6,7 @@ endif()
 get_filename_component(_qt5XmlPatterns_install_prefix "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 # For backwards compatibility only. Use Qt5XmlPatterns_VERSION instead.
-set(Qt5XmlPatterns_VERSION_STRING 5.6.2)
+set(Qt5XmlPatterns_VERSION_STRING 5.7.1)
 
 set(Qt5XmlPatterns_LIBRARIES Qt5::XmlPatterns)
 
@@ -43,8 +43,8 @@ if (NOT TARGET Qt5::XmlPatterns)
 
     set(_Qt5XmlPatterns_OWN_INCLUDE_DIRS "${_qt5XmlPatterns_install_prefix}/include/" "${_qt5XmlPatterns_install_prefix}/include/QtXmlPatterns")
     set(Qt5XmlPatterns_PRIVATE_INCLUDE_DIRS
-        "${_qt5XmlPatterns_install_prefix}/include/QtXmlPatterns/5.6.2"
-        "${_qt5XmlPatterns_install_prefix}/include/QtXmlPatterns/5.6.2/QtXmlPatterns"
+        "${_qt5XmlPatterns_install_prefix}/include/QtXmlPatterns/5.7.1"
+        "${_qt5XmlPatterns_install_prefix}/include/QtXmlPatterns/5.7.1/QtXmlPatterns"
     )
 
     foreach(_dir ${_Qt5XmlPatterns_OWN_INCLUDE_DIRS})
@@ -85,7 +85,7 @@ if (NOT TARGET Qt5::XmlPatterns)
     foreach(_module_dep ${_Qt5XmlPatterns_MODULE_DEPENDENCIES})
         if (NOT Qt5${_module_dep}_FOUND)
             find_package(Qt5${_module_dep}
-                5.6.2 ${_Qt5XmlPatterns_FIND_VERSION_EXACT}
+                5.7.1 ${_Qt5XmlPatterns_FIND_VERSION_EXACT}
                 ${_Qt5XmlPatterns_DEPENDENCIES_FIND_QUIET}
                 ${_Qt5XmlPatterns_FIND_DEPENDENCIES_REQUIRED}
                 PATHS "${CMAKE_CURRENT_LIST_DIR}/.." NO_DEFAULT_PATH
@@ -119,7 +119,7 @@ if (NOT TARGET Qt5::XmlPatterns)
     set_property(TARGET Qt5::XmlPatterns PROPERTY
       INTERFACE_COMPILE_DEFINITIONS QT_XMLPATTERNS_LIB)
 
-    _populate_XmlPatterns_target_properties(RELEASE "libQt5XmlPatterns.so.5.6.2" "" )
+    _populate_XmlPatterns_target_properties(RELEASE "libQt5XmlPatterns.so.5.7.1" "" )
 
 
 

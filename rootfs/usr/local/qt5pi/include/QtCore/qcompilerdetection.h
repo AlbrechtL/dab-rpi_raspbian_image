@@ -1,32 +1,38 @@
 /****************************************************************************
 **
-** Copyright (C) 2015 The Qt Company Ltd.
-** Copyright (C) 2014 Intel Corporation
-** Contact: http://www.qt.io/licensing/
+** Copyright (C) 2016 The Qt Company Ltd.
+** Copyright (C) 2016 Intel Corporation.
+** Contact: https://www.qt.io/licensing/
 **
 ** This file is part of the QtCore module of the Qt Toolkit.
 **
-** $QT_BEGIN_LICENSE:LGPL21$
+** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
 ** accordance with the commercial license agreement provided with the
 ** Software or, alternatively, in accordance with the terms contained in
 ** a written agreement between you and The Qt Company. For licensing terms
-** and conditions see http://www.qt.io/terms-conditions. For further
-** information use the contact form at http://www.qt.io/contact-us.
+** and conditions see https://www.qt.io/terms-conditions. For further
+** information use the contact form at https://www.qt.io/contact-us.
 **
 ** GNU Lesser General Public License Usage
 ** Alternatively, this file may be used under the terms of the GNU Lesser
-** General Public License version 2.1 or version 3 as published by the Free
-** Software Foundation and appearing in the file LICENSE.LGPLv21 and
-** LICENSE.LGPLv3 included in the packaging of this file. Please review the
-** following information to ensure the GNU Lesser General Public License
-** requirements will be met: https://www.gnu.org/licenses/lgpl.html and
-** http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+** General Public License version 3 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL3 included in the
+** packaging of this file. Please review the following information to
+** ensure the GNU Lesser General Public License version 3 requirements
+** will be met: https://www.gnu.org/licenses/lgpl-3.0.html.
 **
-** As a special exception, The Qt Company gives you certain additional
-** rights. These rights are described in The Qt Company LGPL Exception
-** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 2.0 or (at your option) the GNU General
+** Public license version 3 or any later version approved by the KDE Free
+** Qt Foundation. The licenses are as published by the Free Software
+** Foundation and appearing in the file LICENSE.GPL2 and LICENSE.GPL3
+** included in the packaging of this file. Please review the following
+** information to ensure the GNU General Public License requirements will
+** be met: https://www.gnu.org/licenses/gpl-2.0.html and
+** https://www.gnu.org/licenses/gpl-3.0.html.
 **
 ** $QT_END_LICENSE$
 **
@@ -77,6 +83,9 @@
 #  endif
 
 #elif defined(_MSC_VER)
+#  ifdef __clang__
+#    define Q_CC_CLANG ((__clang_major__ * 100) + __clang_minor__)
+#  endif
 #  define Q_CC_MSVC (_MSC_VER)
 #  define Q_CC_MSVC_NET
 #  define Q_OUTOFLINE_TEMPLATE inline
@@ -91,7 +100,9 @@
 #  define Q_UNREACHABLE_IMPL() __assume(0)
 #  define Q_NORETURN __declspec(noreturn)
 #  define Q_DECL_DEPRECATED __declspec(deprecated)
-#  define Q_DECL_DEPRECATED_X(text) __declspec(deprecated(text))
+#  ifndef Q_CC_CLANG
+#    define Q_DECL_DEPRECATED_X(text) __declspec(deprecated(text))
+#  endif
 #  define Q_DECL_EXPORT __declspec(dllexport)
 #  define Q_DECL_IMPORT __declspec(dllimport)
 #  if _MSC_VER >= 1800
@@ -313,14 +324,14 @@
    and PGI C++ 5.2-4 */
 #elif !defined(Q_OS_HPUX) && (defined(__EDG) || defined(__EDG__))
 #  define Q_CC_EDG
-/* From the EDG documentation (does not seem to apply to Compaq C++):
+/* From the EDG documentation (does not seem to apply to Compaq C++ or GHS C):
    _BOOL
         Defined in C++ mode when bool is a keyword. The name of this
         predefined macro is specified by a configuration flag. _BOOL
         is the default.
    __BOOL_DEFINED
         Defined in Microsoft C++ mode when bool is a keyword. */
-#  if !defined(_BOOL) && !defined(__BOOL_DEFINED)
+#  if !defined(_BOOL) && !defined(__BOOL_DEFINED) && !defined(__ghs)
 #    error "Compiler not supported"
 #  endif
 
@@ -342,6 +353,52 @@
 /* Uses CFront, make sure to read the manual how to tweak templates. */
 #  elif defined(__ghs)
 #    define Q_CC_GHS
+#    define Q_DECL_DEPRECATED __attribute__ ((__deprecated__))
+#    define Q_FUNC_INFO       __PRETTY_FUNCTION__
+#    define Q_TYPEOF(expr)      __typeof__(expr)
+#    define Q_ALIGNOF(type)     __alignof__(type)
+#    define Q_UNREACHABLE_IMPL()
+#    if defined(__cplusplus)
+#      define Q_COMPILER_AUTO_TYPE
+#      define Q_COMPILER_STATIC_ASSERT
+#      define Q_COMPILER_RANGE_FOR
+#      if __GHS_VERSION_NUMBER >= 201505
+#        define Q_COMPILER_ALIGNAS
+#        define Q_COMPILER_ALIGNOF
+#        define Q_COMPILER_ATOMICS
+#        define Q_COMPILER_ATTRIBUTES
+#        define Q_COMPILER_AUTO_FUNCTION
+#        define Q_COMPILER_CLASS_ENUM
+#        define Q_COMPILER_CONSTEXPR
+#        define Q_COMPILER_DECLTYPE
+#        define Q_COMPILER_DEFAULT_MEMBERS
+#        define Q_COMPILER_DELETE_MEMBERS
+#        define Q_COMPILER_DELEGATING_CONSTRUCTORS
+#        define Q_COMPILER_EXPLICIT_CONVERSIONS
+#        define Q_COMPILER_EXPLICIT_OVERRIDES
+#        define Q_COMPILER_EXTERN_TEMPLATES
+#        define Q_COMPILER_INHERITING_CONSTRUCTORS
+#        define Q_COMPILER_INITIALIZER_LISTS
+#        define Q_COMPILER_LAMBDA
+#        define Q_COMPILER_NONSTATIC_MEMBER_INIT
+#        define Q_COMPILER_NOEXCEPT
+#        define Q_COMPILER_NULLPTR
+#        define Q_COMPILER_RANGE_FOR
+#        define Q_COMPILER_RAW_STRINGS
+#        define Q_COMPILER_REF_QUALIFIERS
+#        define Q_COMPILER_RVALUE_REFS
+#        define Q_COMPILER_STATIC_ASSERT
+#        define Q_COMPILER_TEMPLATE_ALIAS
+#        define Q_COMPILER_THREAD_LOCAL
+#        define Q_COMPILER_THREADSAFE_STATICS
+#        define Q_COMPILER_UDL
+#        define Q_COMPILER_UNICODE_STRINGS
+#        define Q_COMPILER_UNIFORM_INIT
+#        define Q_COMPILER_UNRESTRICTED_UNIONS
+#        define Q_COMPILER_VARIADIC_MACROS
+#        define Q_COMPILER_VARIADIC_TEMPLATES
+#      endif
+#    endif //__cplusplus
 
 #  elif defined(__DCC__)
 #    define Q_CC_DIAB
@@ -499,6 +556,12 @@
  * C++ extensions:
  *  Q_COMPILER_RESTRICTED_VLA       variable-length arrays, prior to __cpp_runtime_arrays
  */
+
+#ifdef __cplusplus
+#  if __cplusplus < 201103L && !(defined(Q_CC_MSVC) && Q_CC_MSVC >= 1800)
+#    error Qt requires a C++11 compiler and yours does not seem to be that.
+#  endif
+#endif
 
 #ifdef Q_CC_INTEL
 #  define Q_COMPILER_RESTRICTED_VLA
@@ -968,9 +1031,42 @@
 // Also disable <atomic>, since it's clearly not there
 #  undef Q_COMPILER_ATOMICS
 # endif
-# if defined(_LIBCPP_VERSION)
+# if defined(Q_CC_CLANG) && defined(Q_CC_INTEL) && Q_CC_INTEL >= 1500
+// ICC 15.x and 16.0 have their own implementation of std::atomic, which is activated when in Clang mode
+// (probably because libc++'s <atomic> on OS X failed to compile), but they're missing some
+// critical definitions. (Reported as Intel Issue ID 6000117277)
+#  define __USE_CONSTEXPR 1
+#  define __USE_NOEXCEPT 1
+# elif defined(Q_CC_MSVC) && (defined(Q_CC_CLANG) || defined(Q_CC_INTEL))
+// Clang and the Intel compiler support more C++ features than the Microsoft compiler
+// so make sure we don't enable them if the MS headers aren't properly adapted.
+#  ifndef _HAS_CONSTEXPR
+#   undef Q_COMPILER_CONSTEXPR
+#  endif
+#  ifndef _HAS_DECLTYPE
+#   undef Q_COMPILER_DECLTYPE
+#  endif
+#  ifndef _HAS_INITIALIZER_LISTS
+#   undef Q_COMPILER_INITIALIZER_LISTS
+#  endif
+#  ifndef _HAS_NULLPTR_T
+#   undef Q_COMPILER_NULLPTR
+#  endif
+#  ifndef _HAS_RVALUE_REFERENCES
+#   undef Q_COMPILER_RVALUE_REFS
+#  endif
+#  ifndef _HAS_SCOPED_ENUM
+#   undef Q_COMPILER_CLASS_ENUM
+#  endif
+#  ifndef _HAS_TEMPLATE_ALIAS
+#   undef Q_COMPILER_TEMPLATE_ALIAS
+#  endif
+#  ifndef _HAS_VARIADIC_TEMPLATES
+#   undef Q_COMPILER_VARIADIC_TEMPLATES
+#  endif
+# elif defined(_LIBCPP_VERSION)
 // libc++ uses __has_feature(cxx_atomic), so disable the feature if the compiler
-// doesn't support it. That's required for the Intel compiler on OS X, for example.
+// doesn't support it. That's required for the Intel compiler 14.x or earlier on OS X, for example.
 #  if !__has_feature(cxx_atomic)
 #   undef Q_COMPILER_ATOMICS
 #  endif
@@ -1141,6 +1237,37 @@
 #endif
 
 /*
+ * SG10's SD-6 feature detection and some useful extensions from Clang and GCC
+ * https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations
+ * http://clang.llvm.org/docs/LanguageExtensions.html#feature-checking-macros
+ */
+#ifdef __has_builtin
+#  define QT_HAS_BUILTIN(x)             __has_builtin(x)
+#else
+#  define QT_HAS_BUILTIN(x)             0
+#endif
+#ifdef __has_attribute
+#  define QT_HAS_ATTRIBUTE(x)           __has_attribute(x)
+#else
+#  define QT_HAS_ATTRIBUTE(x)           0
+#endif
+#ifdef __has_cpp_attribute
+#  define QT_HAS_CPP_ATTRIBUTE(x)       __has_cpp_attribute(x)
+#else
+#  define QT_HAS_CPP_ATTRIBUTE(x)       0
+#endif
+#ifdef __has_include
+#  define QT_HAS_INCLUDE(x)             __has_include(x)
+#else
+#  define QT_HAS_INCLUDE(x)             0
+#endif
+#ifdef __has_include_next
+#  define QT_HAS_INCLUDE_NEXT(x)        __has_include_next(x)
+#else
+#  define QT_HAS_INCLUDE_NEXT(x)        0
+#endif
+
+/*
  * Warning/diagnostic handling
  */
 
@@ -1162,7 +1289,7 @@
 #  define QT_WARNING_DISABLE_MSVC(number)
 #  define QT_WARNING_DISABLE_CLANG(text)
 #  define QT_WARNING_DISABLE_GCC(text)
-#elif defined(Q_CC_MSVC) && _MSC_VER >= 1500
+#elif defined(Q_CC_MSVC) && _MSC_VER >= 1500 && !defined(Q_CC_CLANG)
 #  undef QT_DO_PRAGMA                           /* not needed */
 #  define QT_WARNING_PUSH                       __pragma(warning(push))
 #  define QT_WARNING_POP                        __pragma(warning(pop))

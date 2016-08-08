@@ -6,7 +6,7 @@ endif()
 get_filename_component(_qt5Test_install_prefix "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 # For backwards compatibility only. Use Qt5Test_VERSION instead.
-set(Qt5Test_VERSION_STRING 5.6.2)
+set(Qt5Test_VERSION_STRING 5.7.1)
 
 set(Qt5Test_LIBRARIES Qt5::Test)
 
@@ -43,8 +43,8 @@ if (NOT TARGET Qt5::Test)
 
     set(_Qt5Test_OWN_INCLUDE_DIRS "${_qt5Test_install_prefix}/include/" "${_qt5Test_install_prefix}/include/QtTest")
     set(Qt5Test_PRIVATE_INCLUDE_DIRS
-        "${_qt5Test_install_prefix}/include/QtTest/5.6.2"
-        "${_qt5Test_install_prefix}/include/QtTest/5.6.2/QtTest"
+        "${_qt5Test_install_prefix}/include/QtTest/5.7.1"
+        "${_qt5Test_install_prefix}/include/QtTest/5.7.1/QtTest"
     )
 
     foreach(_dir ${_Qt5Test_OWN_INCLUDE_DIRS})
@@ -85,7 +85,7 @@ if (NOT TARGET Qt5::Test)
     foreach(_module_dep ${_Qt5Test_MODULE_DEPENDENCIES})
         if (NOT Qt5${_module_dep}_FOUND)
             find_package(Qt5${_module_dep}
-                5.6.2 ${_Qt5Test_FIND_VERSION_EXACT}
+                5.7.1 ${_Qt5Test_FIND_VERSION_EXACT}
                 ${_Qt5Test_DEPENDENCIES_FIND_QUIET}
                 ${_Qt5Test_FIND_DEPENDENCIES_REQUIRED}
                 PATHS "${CMAKE_CURRENT_LIST_DIR}/.." NO_DEFAULT_PATH
@@ -119,7 +119,7 @@ if (NOT TARGET Qt5::Test)
     set_property(TARGET Qt5::Test PROPERTY
       INTERFACE_COMPILE_DEFINITIONS QT_TESTLIB_LIB)
 
-    _populate_Test_target_properties(RELEASE "libQt5Test.so.5.6.2" "" )
+    _populate_Test_target_properties(RELEASE "libQt5Test.so.5.7.1" "" )
 
 
 

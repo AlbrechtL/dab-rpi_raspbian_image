@@ -6,7 +6,7 @@ endif()
 get_filename_component(_qt5QuickTest_install_prefix "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 # For backwards compatibility only. Use Qt5QuickTest_VERSION instead.
-set(Qt5QuickTest_VERSION_STRING 5.6.2)
+set(Qt5QuickTest_VERSION_STRING 5.7.1)
 
 set(Qt5QuickTest_LIBRARIES Qt5::QuickTest)
 
@@ -43,8 +43,8 @@ if (NOT TARGET Qt5::QuickTest)
 
     set(_Qt5QuickTest_OWN_INCLUDE_DIRS "${_qt5QuickTest_install_prefix}/include/" "${_qt5QuickTest_install_prefix}/include/QtQuickTest")
     set(Qt5QuickTest_PRIVATE_INCLUDE_DIRS
-        "${_qt5QuickTest_install_prefix}/include/QtQuickTest/5.6.2"
-        "${_qt5QuickTest_install_prefix}/include/QtQuickTest/5.6.2/QtQuickTest"
+        "${_qt5QuickTest_install_prefix}/include/QtQuickTest/5.7.1"
+        "${_qt5QuickTest_install_prefix}/include/QtQuickTest/5.7.1/QtQuickTest"
     )
 
     foreach(_dir ${_Qt5QuickTest_OWN_INCLUDE_DIRS})
@@ -85,7 +85,7 @@ if (NOT TARGET Qt5::QuickTest)
     foreach(_module_dep ${_Qt5QuickTest_MODULE_DEPENDENCIES})
         if (NOT Qt5${_module_dep}_FOUND)
             find_package(Qt5${_module_dep}
-                5.6.2 ${_Qt5QuickTest_FIND_VERSION_EXACT}
+                5.7.1 ${_Qt5QuickTest_FIND_VERSION_EXACT}
                 ${_Qt5QuickTest_DEPENDENCIES_FIND_QUIET}
                 ${_Qt5QuickTest_FIND_DEPENDENCIES_REQUIRED}
                 PATHS "${CMAKE_CURRENT_LIST_DIR}/.." NO_DEFAULT_PATH
@@ -119,7 +119,7 @@ if (NOT TARGET Qt5::QuickTest)
     set_property(TARGET Qt5::QuickTest PROPERTY
       INTERFACE_COMPILE_DEFINITIONS QT_QMLTEST_LIB)
 
-    _populate_QuickTest_target_properties(RELEASE "libQt5QuickTest.so.5.6.2" "" )
+    _populate_QuickTest_target_properties(RELEASE "libQt5QuickTest.so.5.7.1" "" )
 
 
 

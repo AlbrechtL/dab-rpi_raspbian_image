@@ -6,7 +6,7 @@ endif()
 get_filename_component(_qt5Network_install_prefix "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 # For backwards compatibility only. Use Qt5Network_VERSION instead.
-set(Qt5Network_VERSION_STRING 5.6.2)
+set(Qt5Network_VERSION_STRING 5.7.1)
 
 set(Qt5Network_LIBRARIES Qt5::Network)
 
@@ -43,8 +43,8 @@ if (NOT TARGET Qt5::Network)
 
     set(_Qt5Network_OWN_INCLUDE_DIRS "${_qt5Network_install_prefix}/include/" "${_qt5Network_install_prefix}/include/QtNetwork")
     set(Qt5Network_PRIVATE_INCLUDE_DIRS
-        "${_qt5Network_install_prefix}/include/QtNetwork/5.6.2"
-        "${_qt5Network_install_prefix}/include/QtNetwork/5.6.2/QtNetwork"
+        "${_qt5Network_install_prefix}/include/QtNetwork/5.7.1"
+        "${_qt5Network_install_prefix}/include/QtNetwork/5.7.1/QtNetwork"
     )
 
     foreach(_dir ${_Qt5Network_OWN_INCLUDE_DIRS})
@@ -85,7 +85,7 @@ if (NOT TARGET Qt5::Network)
     foreach(_module_dep ${_Qt5Network_MODULE_DEPENDENCIES})
         if (NOT Qt5${_module_dep}_FOUND)
             find_package(Qt5${_module_dep}
-                5.6.2 ${_Qt5Network_FIND_VERSION_EXACT}
+                5.7.1 ${_Qt5Network_FIND_VERSION_EXACT}
                 ${_Qt5Network_DEPENDENCIES_FIND_QUIET}
                 ${_Qt5Network_FIND_DEPENDENCIES_REQUIRED}
                 PATHS "${CMAKE_CURRENT_LIST_DIR}/.." NO_DEFAULT_PATH
@@ -119,7 +119,7 @@ if (NOT TARGET Qt5::Network)
     set_property(TARGET Qt5::Network PROPERTY
       INTERFACE_COMPILE_DEFINITIONS QT_NETWORK_LIB)
 
-    _populate_Network_target_properties(RELEASE "libQt5Network.so.5.6.2" "" )
+    _populate_Network_target_properties(RELEASE "libQt5Network.so.5.7.1" "" )
 
 
 

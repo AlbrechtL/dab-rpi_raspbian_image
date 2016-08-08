@@ -6,7 +6,7 @@ endif()
 get_filename_component(_qt5PrintSupport_install_prefix "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 # For backwards compatibility only. Use Qt5PrintSupport_VERSION instead.
-set(Qt5PrintSupport_VERSION_STRING 5.6.2)
+set(Qt5PrintSupport_VERSION_STRING 5.7.1)
 
 set(Qt5PrintSupport_LIBRARIES Qt5::PrintSupport)
 
@@ -43,8 +43,8 @@ if (NOT TARGET Qt5::PrintSupport)
 
     set(_Qt5PrintSupport_OWN_INCLUDE_DIRS "${_qt5PrintSupport_install_prefix}/include/" "${_qt5PrintSupport_install_prefix}/include/QtPrintSupport")
     set(Qt5PrintSupport_PRIVATE_INCLUDE_DIRS
-        "${_qt5PrintSupport_install_prefix}/include/QtPrintSupport/5.6.2"
-        "${_qt5PrintSupport_install_prefix}/include/QtPrintSupport/5.6.2/QtPrintSupport"
+        "${_qt5PrintSupport_install_prefix}/include/QtPrintSupport/5.7.1"
+        "${_qt5PrintSupport_install_prefix}/include/QtPrintSupport/5.7.1/QtPrintSupport"
     )
 
     foreach(_dir ${_Qt5PrintSupport_OWN_INCLUDE_DIRS})
@@ -85,7 +85,7 @@ if (NOT TARGET Qt5::PrintSupport)
     foreach(_module_dep ${_Qt5PrintSupport_MODULE_DEPENDENCIES})
         if (NOT Qt5${_module_dep}_FOUND)
             find_package(Qt5${_module_dep}
-                5.6.2 ${_Qt5PrintSupport_FIND_VERSION_EXACT}
+                5.7.1 ${_Qt5PrintSupport_FIND_VERSION_EXACT}
                 ${_Qt5PrintSupport_DEPENDENCIES_FIND_QUIET}
                 ${_Qt5PrintSupport_FIND_DEPENDENCIES_REQUIRED}
                 PATHS "${CMAKE_CURRENT_LIST_DIR}/.." NO_DEFAULT_PATH
@@ -119,7 +119,7 @@ if (NOT TARGET Qt5::PrintSupport)
     set_property(TARGET Qt5::PrintSupport PROPERTY
       INTERFACE_COMPILE_DEFINITIONS QT_PRINTSUPPORT_LIB)
 
-    _populate_PrintSupport_target_properties(RELEASE "libQt5PrintSupport.so.5.6.2" "" )
+    _populate_PrintSupport_target_properties(RELEASE "libQt5PrintSupport.so.5.7.1" "" )
 
 
 

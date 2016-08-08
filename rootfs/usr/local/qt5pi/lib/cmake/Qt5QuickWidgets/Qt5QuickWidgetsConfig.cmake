@@ -6,7 +6,7 @@ endif()
 get_filename_component(_qt5QuickWidgets_install_prefix "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 # For backwards compatibility only. Use Qt5QuickWidgets_VERSION instead.
-set(Qt5QuickWidgets_VERSION_STRING 5.6.2)
+set(Qt5QuickWidgets_VERSION_STRING 5.7.1)
 
 set(Qt5QuickWidgets_LIBRARIES Qt5::QuickWidgets)
 
@@ -43,8 +43,8 @@ if (NOT TARGET Qt5::QuickWidgets)
 
     set(_Qt5QuickWidgets_OWN_INCLUDE_DIRS "${_qt5QuickWidgets_install_prefix}/include/" "${_qt5QuickWidgets_install_prefix}/include/QtQuickWidgets")
     set(Qt5QuickWidgets_PRIVATE_INCLUDE_DIRS
-        "${_qt5QuickWidgets_install_prefix}/include/QtQuickWidgets/5.6.2"
-        "${_qt5QuickWidgets_install_prefix}/include/QtQuickWidgets/5.6.2/QtQuickWidgets"
+        "${_qt5QuickWidgets_install_prefix}/include/QtQuickWidgets/5.7.1"
+        "${_qt5QuickWidgets_install_prefix}/include/QtQuickWidgets/5.7.1/QtQuickWidgets"
     )
 
     foreach(_dir ${_Qt5QuickWidgets_OWN_INCLUDE_DIRS})
@@ -85,7 +85,7 @@ if (NOT TARGET Qt5::QuickWidgets)
     foreach(_module_dep ${_Qt5QuickWidgets_MODULE_DEPENDENCIES})
         if (NOT Qt5${_module_dep}_FOUND)
             find_package(Qt5${_module_dep}
-                5.6.2 ${_Qt5QuickWidgets_FIND_VERSION_EXACT}
+                5.7.1 ${_Qt5QuickWidgets_FIND_VERSION_EXACT}
                 ${_Qt5QuickWidgets_DEPENDENCIES_FIND_QUIET}
                 ${_Qt5QuickWidgets_FIND_DEPENDENCIES_REQUIRED}
                 PATHS "${CMAKE_CURRENT_LIST_DIR}/.." NO_DEFAULT_PATH
@@ -119,7 +119,7 @@ if (NOT TARGET Qt5::QuickWidgets)
     set_property(TARGET Qt5::QuickWidgets PROPERTY
       INTERFACE_COMPILE_DEFINITIONS QT_QUICKWIDGETS_LIB)
 
-    _populate_QuickWidgets_target_properties(RELEASE "libQt5QuickWidgets.so.5.6.2" "" )
+    _populate_QuickWidgets_target_properties(RELEASE "libQt5QuickWidgets.so.5.7.1" "" )
 
 
 

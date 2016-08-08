@@ -6,7 +6,7 @@ endif()
 get_filename_component(_qt5OpenGLExtensions_install_prefix "${CMAKE_CURRENT_LIST_DIR}/../../../" ABSOLUTE)
 
 # For backwards compatibility only. Use Qt5OpenGLExtensions_VERSION instead.
-set(Qt5OpenGLExtensions_VERSION_STRING 5.6.2)
+set(Qt5OpenGLExtensions_VERSION_STRING 5.7.1)
 
 set(Qt5OpenGLExtensions_LIBRARIES Qt5::OpenGLExtensions)
 
@@ -81,7 +81,7 @@ if (NOT TARGET Qt5::OpenGLExtensions)
     foreach(_module_dep ${_Qt5OpenGLExtensions_MODULE_DEPENDENCIES})
         if (NOT Qt5${_module_dep}_FOUND)
             find_package(Qt5${_module_dep}
-                5.6.2 ${_Qt5OpenGLExtensions_FIND_VERSION_EXACT}
+                5.7.1 ${_Qt5OpenGLExtensions_FIND_VERSION_EXACT}
                 ${_Qt5OpenGLExtensions_DEPENDENCIES_FIND_QUIET}
                 ${_Qt5OpenGLExtensions_FIND_DEPENDENCIES_REQUIRED}
                 PATHS "${CMAKE_CURRENT_LIST_DIR}/.." NO_DEFAULT_PATH

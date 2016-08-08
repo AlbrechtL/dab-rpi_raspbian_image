@@ -1,0 +1,14 @@
+prefix=/home/albrecht/raspi/qt5pi
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 Charts
+Description: Qt Charts module
+Version: 5.7.1
+Libs: -L${libdir} -lQt5Charts 
+Libs.private: -L/home/albrecht/raspi/sysroot/usr/lib/arm-linux-gnueabihf -L/home/albrecht/raspi/qt5pi/lib -lQt5Widgets -lQt5Gui -lQt5Core -lpthread -lGLESv2  
+Cflags: -I${includedir}/QtCharts -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Widgets
+

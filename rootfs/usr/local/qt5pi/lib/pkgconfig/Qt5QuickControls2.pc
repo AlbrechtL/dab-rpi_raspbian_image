@@ -1,0 +1,14 @@
+prefix=/home/albrecht/raspi/qt5pi
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 QuickControls2
+Description: Qt QuickControls2 module
+Version: 5.7.1
+Libs: -L${libdir} -lQt5QuickControls2 
+Libs.private: -L/home/albrecht/raspi/sysroot/usr/lib/arm-linux-gnueabihf -L/home/albrecht/raspi/qt5pi/lib -lQt5Quick -lQt5Gui -lQt5Qml -lQt5Network -lQt5Core -lpthread -L/home/albrecht/raspi/qt5pi/lib -lQt5QuickTemplates2 -L/home/albrecht/raspi/sysroot/usr/lib/arm-linux-gnueabihf -L/home/albrecht/raspi/qt5pi/lib -lQt5Quick -lQt5Gui -lQt5Qml -lQt5Network -lQt5Core -lpthread -lGLESv2  
+Cflags: -I${includedir}/QtQuickControls2 -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Quick
+

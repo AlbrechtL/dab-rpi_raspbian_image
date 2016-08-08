@@ -158,7 +158,7 @@ $ git clone https://github.com/AlbrechtL/dab-rpi_raspbian_image.git
 
   ```
 $ cd dab-rpi_raspbian_image
-$ rsync -av rootfs root@IP:/
+$ rsync -av rootfs/ root@IP:/
   ```
 11. Back on the Raspberry fix the EGL/GLES libraries symbolic links
 
